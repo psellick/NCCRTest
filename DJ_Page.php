@@ -16,7 +16,9 @@ var pageTracker = _gat._getTracker("UA-12742932-1");
 pageTracker._trackPageview();
 } catch(err) {} 
 </script>
-
+<?php
+require('./blog/wp-blog-header.php');
+?>
 </head>
 
 <body>
@@ -27,7 +29,7 @@ pageTracker._trackPageview();
         
         <div id="menu">
         	<ul>
-            	<li class="menuitem"><a href="./index.html">Home</a></li>
+            	<li class="menuitem"><a href="./index.php">Home</a></li>
                 <li class="menuitem"><a href="./live.html">Listen Live</a></li>
                 <li class="menuitem"><a href="./schedule.html">Schedule</a></li>
 				<li class="menuitem"><a href="./contact.html">Contact</a></li>
@@ -40,10 +42,11 @@ pageTracker._trackPageview();
 			<div id="leftmenu_top"></div>
 				<div id="leftmenu_main">                   
                 <h3>Our Links</h3>
-                   <ul>
-                    <li><a href="./DJ_Page.html">Our DJ's</a></li>
+                <ul>
+                    <li><a href="./DJ_Page.php">Our DJ's</a></li>
                     <li><a href="./events.html">Our Events</a></li>
                     <li><a href="./Photos.html">Our Photos</a></li>
+					<li><a href="./blog.php">Our Blog</a></li>
                 </ul>
 		</div>
 		<div id="leftmenu_bottom"></div>
@@ -55,18 +58,22 @@ pageTracker._trackPageview();
         <div id="content_top"></div>
         <div id="content_main">
         	<h2>Find out more about our DJ's here </h2>
-			
-			<article>
-			
-			</article>
-
-	 
+			<p>&nbsp;</p>
+			<?php $posts = get_posts('order=DES&category=5');
+			foreach ($posts as $post) : start_wp(); ?>
+				<h3><?php the_title(); ?></h3>
+				<p>
+					<?php the_content(); ?> 
+				</p>			
+				<p>&nbsp;</p>
+			<?php endforeach;?>
+			<p>&nbsp;</p>
 		 </div>
 		 
         <div id="content_bottom"></div>
             	<h3>Join in the fun</h3>
             <p>Like what you hear on NCCR, want to get involved ?, We always have vacancies for DJ's, Program Makers, Technical people 
-			(both IT and broadcast) and we welcome guests with open arms. Just email us at studio@northcotswoldonline.com</p>
+			(both IT and broadcast) and we welcome guests with open arms. Just email us at studio@northcotswoldonline.com, guess whats new</p>
           <p>
 
 

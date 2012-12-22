@@ -31,7 +31,7 @@ require('./blog/wp-blog-header.php');
         
         <div id="menu">
         	<ul>
-            	<li class="menuitem"><a href="./index.html">Home</a></li>
+            	<li class="menuitem"><a href="./index.php">Home</a></li>
                 <li class="menuitem"><a href="./live.html">Listen Live</a></li>
                 <li class="menuitem"><a href="./schedule.html">Schedule</a></li>
 				<li class="menuitem"><a href="./contact.html">Contact</a></li>
@@ -44,7 +44,7 @@ require('./blog/wp-blog-header.php');
 				<div id="leftmenu_main">                   
                 <h3>Our Links</h3>
                 <ul>
-                    <li><a href="./DJ_Page.html">Our DJ's</a></li>
+                    <li><a href="./DJ_Page.php">Our DJ's</a></li>
                     <li><a href="./events.html">Our Events</a></li>
                     <li><a href="./Photos.html">Our Photos</a></li>
 					<li><a href="./blog.php">Our Blog</a></li>
@@ -60,16 +60,14 @@ require('./blog/wp-blog-header.php');
         	<p>&nbsp;</p>
 			<p>Find out what the DJ's have lined up for this week, hear what they think about the shows, and general chat on the NCCR Blog site</p>
 				<p>&nbsp;</p>
-			<?php $posts = get_posts('numberposts=10&order=DES&orderby=the_date');
-			foreach ($posts as $post) : start_wp(); ?>
-				<h3><?php the_date(); echo "<br />"; ?><h3>
-					<p>&nbsp;</p>
-				<h4><?php the_title(); ?></h4>
-				<?php the_excerpt(); ?> 
-				<p>&nbsp;</p>
-			<?php endforeach;?>
+				<?php $posts = get_posts('numberposts=10&order=DES&orderby=the_date&category=4');
+					foreach ($posts as $post) : start_wp(); ?>
+						<h3><?php the_date(); echo "<br />"; ?><h3>
+						<h4><?php the_title(); ?></h4>
+						<?php the_excerpt(); ?> 
+						<p>&nbsp;</p>
+					<?php endforeach;?>
 			<p>&nbsp;</p>
-		  	<p>&nbsp;</p>
 		 </div>
 		 
         <div id="content_bottom"></div>

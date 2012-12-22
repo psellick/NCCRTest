@@ -35,6 +35,12 @@ pageTracker._trackPageview();
       });
 </script>
 
+
+<?php
+require('./blog/wp-blog-header.php');
+?>
+
+
 </head>
 
 <body>
@@ -45,7 +51,7 @@ pageTracker._trackPageview();
         
         <div id="menu">
         	<ul>
-            	<li class="menuitem"><a href="./index.html">Home</a></li>
+            	<li class="menuitem"><a href="./index.php">Home</a></li>
                 <li class="menuitem"><a href="./live.html">Listen Live</a></li>
                 <li class="menuitem"><a href="./schedule.html">Schedule</a></li>
 				<li class="menuitem"><a href="./contact.html">Contact</a></li>
@@ -59,7 +65,7 @@ pageTracker._trackPageview();
 				<div id="leftmenu_main">                   
                 <h3>Our Links</h3>
                 <ul>
-                    <li><a href="./DJ_Page.html">Our DJ's</a></li>
+                    <li><a href="./DJ_Page.php">Our DJ's</a></li>
                     <li><a href="./events.html">Our Events</a></li>
                     <li><a href="./Photos.html">Our Photos</a></li>
 					<li><a href="./blog.php">Our Blog</a></li>
@@ -80,14 +86,17 @@ pageTracker._trackPageview();
        	  <p>Welcome to NCCR, the only station in the North Cotswolds, where we broadcast a selection of music, local news stories and programmes that are relevant to the local community.
 Listen in Now or playback 7 days worth of content</p>
         	<p>&nbsp;</p>
-			<h3>This Weeks News</h3>
-        	<p>We have a great line-up of programmes for you, nearly the last week until Xmas. Listen to Rob on Unsigned Community for his run down of 2012's
-			best Unsigned Bands, music and news all week, as well as some special shows next week. 
-		 		 <p>&nbsp;</p>
+		<?php $posts = get_posts('numberposts=10&order=DES&orderby=the_date&category=3');
+			foreach ($posts as $post) : start_wp(); ?>
+				<h3><?php the_title(); ?></h3>
+				<p>
+					<?php the_content(); ?> 
+				</p>			
+				<p>&nbsp;</p>
+			<?php endforeach;?>
 			<h3>@NCCRradio </h3>
 			<p>&nbsp;</p>
 		 <div class="tweet"></div>
-	 
 		 </div>
 		 
         <div id="content_bottom">
